@@ -1,0 +1,11 @@
+/* Set our tables in good appearance */
+
+thead {
+    color: brown;
+    font-size: 16px !important;
+}
+
+tr {
+    font-size: 13px !important;
+} 
+

@@ -1,0 +1,9 @@
+channels==1.1.8
+django==2.1.4
+python-dotenv
+django-ipware
+redis
+django_redis
+requests
+service_identity
+asgi_redis

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="row justify-content-center align-self-center">
+        <h3 class="mt-5">Django WebScokets</h3>
+    </div>
+
+
+
+
+{% block script %}
+
+<script>
+    function ConnectToWebSocket() {
+        console.log('Connecting to websockets server..')
+        // Note that the path doesn't matter for routing; any WebSocket
+        // connection gets bumped over to WebSocket consumers
+        socket = new WebSocket("ws://" + window.location.host + "/chat/");
+        socket.onmessage = function(event) {
+            var json_data = JSON.parse(event.data);
+            // NOTE: We escape JavaScript to prevent XSS attacks.
+            var res_01 = json_data['codename'].Alpha1;
+            busyFlag = json_data['codename'].Alpha6;
+            console.log(res_01)
+            console.log(busyFlag);
+
+
+            // ping our server forever
+            //for(var i=0; i<10; i++) {
+            //  if(busyFlag=='false') {
+            //        if (socket.readyState == WebSocket.OPEN) socket.onopen();
+            //        busyFlag = 'true';      
+            //    }
+            //    else ;
+            //}
+        }
+
+
+        // Send the signal now
+        socket.onopen = function() {
+            socket.send("echo 0 - 1 ... codename:dragon sky. Hi!");    // Initialise first call
+            
+        }
+
+        // Call onopen directly if socket is already open
+        if (socket.readyState == WebSocket.OPEN) socket.onopen();
+    }
+
+    ConnectToWebSocket();
+
+</script>
+{% endblock script %}
+
+
+
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+

@@ -1,0 +1,153 @@
+// Declarative Pipeline
+pipeline{
+    agent any
+    tools {
+        terraform 'terraform-11'
+    }
+    stages{
+        stage('Stage1 Git checkout'){
+            steps{
+                git credentialsId: 'fe99a01d-7179-46b7-a863-b7122d330541', url: 'https://github.com/cybernetor066/Jenkins_Project_2021_1'
+            }
+        }
+        stage('Stage2 Terraform Initialisation stage'){
+            steps{
+                sh 'terraform init'
+            }
+        }
+        stage('Stage3 Terraform Apply stage'){
+            steps{
+                sh 'terraform apply -auto-approve'
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+// pipeline{
+//     agent any
+//     tools {
+//         terraform 'terraform-11'
+//     }
+//     stages{
+//         stage('Stage1 Git checkout'){
+//             steps{
+//                 git credentialsId: 'fe99a01d-7179-46b7-a863-b7122d330541', url: 'https://github.com/cybernetor066/Jenkins_Project_2021_1'
+//             }
+//         }
+//         stage('Stage2 Terraform Initialisation stage'){
+//             steps{
+//                 sh 'terraform init'
+//             }
+//         }
+//         stage('Stage3 Terraform Destroy stage'){
+//             steps{
+//                 sh 'terraform destroy -auto-approve'
+//             }
+//         }
+//     }
+// }
+
+
+
+
+
+
+
+
+
+// // Declarative Pipeline
+// pipeline{
+//     agent any
+//     stages{
+//         stage('Stage1 Testing Bash commands'){
+//             steps{
+//                 sh 'echo "Hello World!"'
+//             }
+//         }
+//         stage('Stage2 Working with interaction with file paths'){
+//             steps{
+//                 sh 'echo "Testing!"'
+//                 sh 'echo "Testing file paths!"'
+//                 sh 'cat ${workspace}/home/cybernetor066/hello_ssh_test_file'
+
+//             }
+//         }
+        
+//     }
+// }
+
+
+
+// Locate directories on Master from Jenkins
+// Declarative Pipeline
+pipeline{
+    agent any
+    stages{
+        stage('Stage1 Testing Bash commands'){
+            steps{
+                sh 'echo "Hello World!"'
+            }
+        }
+        stage('Stage2 Working with interaction with file paths'){
+            steps{
+                sh 'echo "Testing!"'
+                sh 'echo "Testing file paths!"'
+                // sh 'cat ${workspace}/home/cybernetor066/hello_ssh_test_file'
+                // /var/lib/jenkins/workspace/IAC-dev-stage-create-resources/terraform.tfstate
+                sh 'ls ${workspace}/var/lib/jenkins/workspace/IAC-dev-stage-create-resources/'
+                
+
+            }
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// pipeline {
+//   agent any
+
+//   stages {
+//     stage("This is stage 1") {
+//       steps {
+//         // Cool stuff goes here!
+//       }
+//     }
+
+//     stage("This is stage 2") {
+//       steps {
+//         // Cool stuff goes here!
+//       }
+//     }
+//   }
+// }
+
+
+// https://http://localhost:8080//pipeline-model-converter/validate
+
+
+
